@@ -45,12 +45,12 @@ public class Singleton {
     public static Singleton getInstance(){ // 클래스의 인스턴스를 만들어서 리턴
         if (null == uniqueInstance) {
             uniqueInstance = new Singleton();
-            /**
-             * 인스턴스가 만들어지지 않았으면 private으로 선언된 생성자를 사용해서 
-             * Singleton 객체 생성 후 uniqueInstance 에 대입
-             * 인스턴스가 필요한 상황이 발생하기 전까지 인스턴스 생성하지 않음
-             * 게이른 인스턴스 생성(lazyinstantiation) 이라 부름
-             */
+    /**
+            * 인스턴스가 만들어지지 않았으면 private으로 선언된 생성자를 사용해서 
+            * Singleton 객체 생성 후 uniqueInstance 에 대입
+            * 인스턴스가 필요한 상황이 발생하기 전까지 인스턴스 생성하지 않음
+            * 게이른 인스턴스 생성(lazyinstantiation) 이라 부름
+            */
         }
         return uniqueInstance;
     }
