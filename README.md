@@ -1,139 +1,187 @@
-[![CI](https://img.shields.io/badge/Github%20Pages-passing-gold.svg?logo=github)](ci)
-[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
-[![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%204.3.2-green.svg)](https://jekyllrb.com/)
-[![Jekyll](https://img.shields.io/badge/gem%20version-3.2.33-blue.svg)](gem)
-<a href="https://jekyll-themes.com/byanko55/jekyll-theme-satellite">
-  <img
-    src="https://img.shields.io/badge/featured%20on-JT-red.svg"
-    height="20"
-    alt="Jekyll Themes Shield"
-  />
-</a>
+Kotlin은 간결하고 읽기 쉬운 코드 작성이 가능한 언어입니다. 기본 문법을 주요 주제별로 정리해드릴게요.
 
-# Satellite🛰️ - Jekyll blog theme
-An emotional and adorable blog theme powered by ***Jekyll***. 
+---
 
-Live demo is available [here](https://byanko55.github.io)
+### ✏️ **1. 변수 선언**
+```kotlin
+val name: String = "Kotlin" // 읽기 전용(불변)
+var age: Int = 25           // 변경 가능(가변)
 
-![Demo Page](https://i.ibb.co/h1QF06V/demo.webp)
-
-### Light Mode
-![Demo Page-light](https://i.ibb.co/DtDPCpR/white.webp)
-
-### Dark Mode
-![Demo Page-dark](https://i.ibb.co/BjsrWg2/dark.webp)
-
-### Fresh and Attractive Design
-<p>
-<img src="https://i.ibb.co/4NwrTyj/image-2.webp" height="400px" align="center"/>
-<img src="https://i.ibb.co/WvyBzkL/Animation.gif" height="400px" align="center"/>
-</p>
-
-<br></br>
-
-## Features
-
-* Comment System using *giscus*
-* Copy contents of Code Block
-* Dark/Light Theme
-* Google Analytics
-* Hierarchical Categorization
-* Mobile friendly design
-* Related Posts
-* RSS/Sitemap support
-* Search Post by Title or Tags
-* Syntax Highlighter (*highlight.js*)
-* Table of Contents
-* Visitor Counter (*goatcounter*)
-
-
-## Installation
-
-There are two ways to setup this theme:
-<br></br>
-
-### Method 1: Build from source (Recommended)
-Fork [this repository](https://github.com/byanko55/jekyll-theme-satellite) or download the [source](https://github.com/byanko55/jekyll-theme-satellite/releases) as a zip. 
-
-If you use as destination a repository named USERNAME.github.io, then your url will be https://USERNAME.github.io/.
-
-Otherwise (let's say `myblog`), you need to edit the '*baseurl*' parameter in `_config.yml`. In this case, the root page will be served to "https://USERNAME.github.io/myblog/".
-
-```yml
-# set baseurl as "/<repo-name>". ex) baseurl: /myblog
-baseurl: /myblog
+// 자료형 생략 가능
+val city = "Seoul"
+var score = 90
 ```
-<br></br>
+- `val` : 값을 변경할 수 없는 **불변 변수**  
+- `var` : 값을 변경할 수 있는 **가변 변수**
 
+---
 
-### Method 2: Utilize Gem package
-Create a clean site directory (Follow the **Instruction 1~4** described [here](https://jekyllrb.com/docs/)).
-
-The following materials are redundant, so remove them.
-* index.markdown
-* about.markdown
-<br></br>
-
-Then, add this line to your Jekyll site's `Gemfile`:
-
-```bash
-gem "jekyll-theme-satellite"
+### 🔢 **2. 기본 자료형**
+```kotlin
+val intNum: Int = 10        // 정수
+val doubleNum: Double = 3.14 // 실수
+val isTrue: Boolean = true   // 불리언
+val char: Char = 'A'         // 문자
+val str: String = "Hello"    // 문자열
 ```
 
-You need to replace the initial `_config.yml` file with the [prepared one](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/_config.yml).
-<br></br>
+- Kotlin은 **기본 자료형도 객체**로 다룸 (ex: `Int`, `Double`)
 
-### Modify your site setting
+---
 
-Now fill in the **site variable** such as blog name, profile image, and social accounts in `_config.yml`.
+### 🔄 **3. 조건문**
+```kotlin
+val score = 85
 
-```yml
-title: Example.com
-description: "Satellite - jekyll blog theme"
-logo_img: "/assets/img/favicon.webp"
-profile_img: "/assets/img/profile.jpg"
+// if-else
+if (score >= 90) {
+    println("A 등급")
+} else if (score >= 80) {
+    println("B 등급")
+} else {
+    println("C 등급")
+}
 
-# Social Links
-email: example@gmail.com
-github_username: github
-twitter_username: twitter
-instagram_username: instagram
-linkedin_username: linkedin
-facebook_username: facebook
+// if는 표현식으로 사용 가능
+val result = if (score >= 80) "합격" else "불합격"
+println(result)
 ```
 
+- `if`는 값을 반환하는 표현식으로 사용 가능
 
-### Run site locally
+---
 
-From the site root directory, install the dependencies:
+### 🔁 **4. 반복문**
+```kotlin
+// for문 (범위 연산자 사용)
+for (i in 1..5) {
+    println(i) // 1, 2, 3, 4, 5
+}
 
+// 하행 반복
+for (i in 5 downTo 1) {
+    println(i) // 5, 4, 3, 2, 1
+}
+
+// while문
+var count = 3
+while (count > 0) {
+    println("Count: $count")
+    count--
+}
 ```
-bundle install
+
+- `1..5` : 1부터 5까지  
+- `1 until 5` : 1부터 4까지 (끝 포함 안함)  
+- `step` : 간격 지정 가능  
+
+---
+
+### 📦 **5. 함수 선언**
+```kotlin
+// 기본 함수
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+
+// 표현식 형태의 함수
+fun multiply(a: Int, b: Int) = a * b
+
+// 반환값 없는 함수
+fun printMessage(msg: String): Unit {
+    println(msg)
+}
 ```
 
+- `Unit`은 Java의 `void`와 같으며 생략 가능  
 
-Start a Jekyll service.
+---
 
+### 📝 **6. 클래스와 객체**
+```kotlin
+class Person(val name: String, var age: Int) {
+    fun introduce() {
+        println("안녕하세요, 저는 $name이고, 나이는 $age살입니다.")
+    }
+}
+
+val person = Person("홍길동", 30)
+person.introduce()
 ```
-bundle exec jekyll serve
+
+- **주 생성자**는 클래스 헤더에 선언  
+- **부 생성자**는 `constructor` 키워드 사용  
+
+---
+
+### 📚 **7. 컬렉션 (List, Set, Map)**
+```kotlin
+// List (불변)
+val fruits = listOf("사과", "바나나", "딸기")
+println(fruits[0]) // 사과
+
+// MutableList (가변)
+val mutableFruits = mutableListOf("사과", "바나나")
+mutableFruits.add("딸기")
+
+// Set (중복 없음)
+val numbers = setOf(1, 2, 3, 3)
+println(numbers) // [1, 2, 3]
+
+// Map (Key-Value)
+val user = mapOf("name" to "홍길동", "age" to 30)
+println(user["name"]) // 홍길동
 ```
 
-Now open [http://localhost:4000](http://localhost:4000) in your browser.
-<br></br>
+---
 
-## Customizing
+### ⚡ **8. Null 안전성**
+```kotlin
+var name: String? = "Kotlin" // ?를 붙이면 null 허용
+name = null
 
-You can find useful manuals for customizing your site from the below table:
+// 안전 호출 (Safe Call)
+println(name?.length) // null이면 실행 안됨
 
-|||
-|---|---|
-|Posting guidelines|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Posting%20Guide.md)|
-|Enabling ***comment system***|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Comment%20System.md)|
-|Enabling ***Visitor counter***|[link](https://github.com/byanko55/jekyll-theme-satellite/blob/master/docs/Visitor%20Counter.md)|
+// 엘비스 연산자 (?:)
+val length = name?.length ?: 0
+println(length) // name이 null이면 0 반환
 
-## Contribution
-If you would like to report a bug or request a new feature, please open [an issue](https://github.com/byanko55/jekyll-theme-satellite/issues) We are open to any kind of feedback or collaboration.
-<br></br>
+// 강제 null 처리 (!!)
+println(name!!.length) // null이면 예외 발생
+```
 
-## License
-© 2024 *Yankos*. This theme is available as open source under the terms of the [MIT License](https://opensource.org/license/mit/).
+---
+
+### 🛠️ **9. 확장 함수**
+```kotlin
+fun String.greet() {
+    println("안녕하세요, $this!")
+}
+
+"홍길동".greet() // 안녕하세요, 홍길동!
+```
+
+- 기존 클래스에 새로운 기능을 추가하는 방법
+
+---
+
+### 🕰️ **10. 코루틴 (비동기 처리)**
+```kotlin
+import kotlinx.coroutines.*
+
+fun main() = runBlocking {
+    launch {
+        delay(1000L)
+        println("코루틴 실행")
+    }
+    println("메인 실행")
+}
+```
+
+- 코루틴은 **비동기 작업**을 간결하게 처리하는 방법  
+- `launch`는 새로운 작업을 시작하고, `async`는 값을 반환  
+
+---
+
+이 외에도 **람다, 데이터 클래스, sealed 클래스, 제네릭** 등 다양한 기능이 있습니다. 특정 부분을 더 자세히 설명해드릴 수도 있는데, 어느 부분에 좀 더 관심이 있으신가요? 😊
